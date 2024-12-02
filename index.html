@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-Buffer Visualisierung - Car</title>
+    <title>Z-Buffer Visualisierung</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r110/three.min.js"></script>
     <style>
         body {
@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="info">
-        <h3>Z-Buffer Visualisierung - Car</h3>
+        <h3>Z-Buffer Visualisierung</h3>
         <p>Steuerung:</p>
         <ul>
             <li><b>WASD:</b> Kamera in XY-Ebene bewegen</li>
@@ -40,7 +40,7 @@
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 2, 10);
+        camera.position.set(0, 2, 12);
 
         // Lichtquellen
         const ambientLight = new THREE.AmbientLight(0x404040, 1.5); // Weiches Umgebungslicht
@@ -51,24 +51,24 @@
         scene.add(pointLight);
 
         // Materialien
-        const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0xff5555, shininess: 100 });
+        const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x89CFF0, shininess: 100 }); // Baby blue
         const wheelMaterial = new THREE.MeshPhongMaterial({ color: 0x333333, shininess: 50 });
 
         // Car Body
-        const carBodyGeometry = new THREE.BoxGeometry(3, 1, 1.5);
+        const carBodyGeometry = new THREE.BoxGeometry(5, 3, 6); // Bigger box
         const carBody = new THREE.Mesh(carBodyGeometry, bodyMaterial);
-        carBody.position.set(0, 0.75, 0);
+        carBody.position.set(0, 1.5, 0);
         scene.add(carBody);
 
         // Car Wheels
-        const wheelGeometry = new THREE.CylinderGeometry(0.4, 0.4, 0.5, 32);
+        const wheelGeometry = new THREE.CylinderGeometry(1, 1, 1.5, 32);
 
         const wheels = [];
         const wheelPositions = [
-            [-1.2, 0.4, 0.75],  // Front left
-            [1.2, 0.4, 0.75],   // Front right
-            [-1.2, 0.4, -0.75], // Rear left
-            [1.2, 0.4, -0.75],  // Rear right
+            [-2, 0.4, 2],  // Front left
+            [2, 0.4, 2],   // Front right
+            [-2, 0.4, -2], // Rear left
+            [2, 0.4, -2],  // Rear right
         ];
 
         wheelPositions.forEach(([x, y, z]) => {
